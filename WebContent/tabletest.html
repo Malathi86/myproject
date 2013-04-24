@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" media="screen" href="CSS/custom.css")">
+		<link rel="stylesheet" media="screen" href="JS/jq_tables/demo_table_jui.css")">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script> 		
+		<script src="JS/jq_tables/jquery.dataTables.js" type="text/javascript"></script> 
+		<script type="text/javascript" charset="utf-8">
+		   var sortData = [];
+			/* Create an array with the values of all the input boxes in a column */
+			$.fn.dataTableExt.afnSortData['dom-text'] = function  ( oSettings, iColumn )
+			{
+				var aData = [];
+				$( 'td:eq('+iColumn+') input', oSettings.oApi._fnGetTrNodes(oSettings) ).each( function () {
+					aData.push( this.value );
+				} );
+				return aData;
+			}
+			
+			/* Create an array with the values of all the select options in a column */
+			$.fn.dataTableExt.afnSortData['dom-select'] = function  ( oSettings, iColumn )
+			{
+				var aData = [];
+				$( 'td:eq('+iColumn+') select', oSettings.oApi._fnGetTrNodes(oSettings) ).each( function () {
+					aData.push( $(this).val() );
+				} );
+				return aData;
+			}
+			
+			/* Create an array with the values of all the checkboxes in a column */
+			$.fn.dataTableExt.afnSortData['dom-checkbox'] = function  ( oSettings, iColumn )
+			{
+				//var aData = [];
+				$( 'td:eq('+iColumn+') input', oSettings.oApi._fnGetTrNodes(oSettings) ).each( function () {
+					sortData.push( this.checked==true ? "1" : "0" );
+				} );
+				return sortData;
+			}
+			
+			/* Initialise the table with the required column sorting data types */
+			$(document).ready(function() {
+				$('#example').dataTable( {
+					"aoColumns": [
+						null,
+						null,
+						{ "sSortDataType": "dom-text" },
+						{ "sSortDataType": "dom-text", "sType": "numeric" },
+						{ "sSortDataType": "dom-select" },
+						{ "sSortDataType": "dom-checkbox" }
+					]
+				} );
+			} );
+			function getData(){
+				alert(sortData);
+			}
+		</script>
+		<title>Insert title here</title>
+	</head>
+	<body>
+	    <button onclick="getData();">Get Selected Data</button><br/>
+        <div id="demo">
+			<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+				<thead>
+					<tr>
+						<th>Rendering engine</th>
+						<th>Browser</th>
+						<th>Platform(s)</th>
+						<th>Engine version</th>
+						<th>CSS grade</th>
+						<th>Check</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="gradeX">
+						<td>Trident</td>
+						<td>Internet
+							 Explorer 4.0</td>
+						<td><input type="text" class="engine" value="Win 95+"></td>
+						<td class="center"><input type="text" class="version" value="4"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A">A</option>
+								<option value="C">C</option>
+								<option value="X" selected="selected">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox" checked="checked"></td>
+					</tr>
+					<tr class="gradeC">
+						<td>Trident</td>
+						<td>Internet
+							 Explorer 5.0</td>
+						<td><input type="text" class="engine" value="Win 95+"></td>
+						<td class="center"><input type="text" class="version" value="5"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A">A</option>
+								<option value="C" selected="selected">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Trident</td>
+						<td>Internet
+							 Explorer 5.5</td>
+						<td><input type="text" class="engine" value="Win 95+"></td>
+						<td class="center"><input type="text" class="version" value="5.5"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox" checked="checked"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Trident</td>
+						<td>Internet
+							 Explorer 6</td>
+						<td><input type="text" class="engine" value="Win 98+"></td>
+						<td class="center"><input type="text" class="version" value="6"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Trident</td>
+						<td>Internet Explorer 7</td>
+						<td><input type="text" class="engine" value="Win XP SP2+"></td>
+						<td class="center"><input type="text" class="version" value="7"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox" checked="checked"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Trident</td>
+						<td>AOL browser (AOL desktop)</td>
+						<td><input type="text" class="engine" value="Win XP"></td>
+						<td class="center"><input type="text" class="version" value="6"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox" checked="checked"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Firefox 1.0</td>
+						<td><input type="text" class="engine" value="Win 98+ / OSX.2+"></td>
+						<td class="center"><input type="text" class="version" value="1.7"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Firefox 1.5</td>
+						<td><input type="text" class="engine" value="Win 98+ / OSX.2+"></td>
+						<td class="center"><input type="text" class="version" value="1.8"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Firefox 2.0</td>
+						<td><input type="text" class="engine" value="Win 98+ / OSX.2+"></td>
+						<td class="center"><input type="text" class="version" value="1.8"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox" checked="checked"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Firefox 3.0</td>
+						<td><input type="text" class="engine" value="Win 2k+ / OSX.3+"></td>
+						<td class="center"><input type="text" class="version" value="1.9"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox" checked="checked"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Camino 1.0</td>
+						<td><input type="text" class="engine" value="OSX.2+"></td>
+						<td class="center"><input type="text" class="version" value="1.8"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Camino 1.5</td>
+						<td><input type="text" class="engine" value="OSX.3+"></td>
+						<td class="center"><input type="text" class="version" value="1.8"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox" checked="checked"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Netscape 7.2</td>
+						<td><input type="text" class="engine" value="Win 95+ / Mac OS 8.6-9.2"></td>
+						<td class="center"><input type="text" class="version" value="1.7"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Netscape Browser 8</td>
+						<td><input type="text" class="engine" value="Win 98SE+"></td>
+						<td class="center"><input type="text" class="version" value="1.7"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox" checked="checked"></td>
+					</tr>
+					<tr class="gradeA">
+						<td>Gecko</td>
+						<td>Netscape Navigator 9</td>
+						<td><input type="text" class="engine" value="Win 98+ / OSX.2+"></td>
+						<td class="center"><input type="text" class="version" value="1.8"></td>
+						<td class="center">
+							<select size="1">
+								<option value="A" selected="selected">A</option>
+								<option value="C">C</option>
+								<option value="X">X</option>
+								<option value="U">U</option>
+							</select>
+						</td>
+						<td class="center"><input type="checkbox"></td>
+					</tr>
+					
+				</tbody>
+				
+			</table>
+			</div>
+	</body>
+</html>
