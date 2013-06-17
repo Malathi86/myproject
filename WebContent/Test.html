@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script> 
+        <script src="file://localhost/Users/malathi/Documents/Codes/sgm-filter.js" type="text/javascript"></script> 
+        <link rel="stylesheet" media="screen" href="file://localhost/Users/malathi/Documents/Codes/custom.css">
+        <script type="text/javascript">
+            
+		  
+		</script>
+		<style type="text/css">
+		  
+        </style>
+</head>
+<body>
+       <div style="min-height: 35px; height: auto;">              
+                    <div class="sogamo_widget">       
+                        <div class="sogamo_widget_body"></div>
+                        <div class="sogamo_widget_footer">
+                             
+                                 <div class="sgm-select">
+                                    <select onchange="showSecondFilter(this.value)" name="first_filter" id="first_filter" class="first_filter" style="height: 25px;">   
+                                        <option value="">-- Filter By --</option>                                  
+                                        <option value="1">Game</option>                                        
+                                        <option value="3">Age</option>
+                                        <option value="4">Gender</option>
+                                        <option value="7">City</option>
+                                        <option value="5">Country</option>
+                                        <option value="9">Signed Up</option>
+                                    </select>
+                                </div>      
+                                <div id="addt_filters"></div>
+                                <input type="button" class="silverBorder button_small" id="filter_apply" name="filter_apply" value="Apply Filter" disabled="disabled">
+                                <div id="hidden_values_1"  class="hidden_values">
+                                    <div class="sgm-select third_filter" style="width: auto;  padding: 0;">
+                                         <select name="third_filter_1" id="third_filter_1" style="width: auto; display: inline-block;">                                               
+                                                <option value="">fghghghgh</option>                                                                                     
+                                         </select>
+                                     </div>
+                                </div>
+                                <div id="hidden_values_5" class="hidden_values">
+                                    <div class="sgm-select third_filter" style="width: auto;  padding: 0;">
+                                         <select name="third_filter_5" id="third_filter_5" style="width: auto; display: inline-block;"> 
+                                                <option value="">fghghghgh</option>
+                                         </select>
+                                    </div>
+                                </div>                                                               
+                            
+                        </div>  
+                        <div class="sogamo_widget_footer">
+                            <div id="addt_filters_date">Date: <div style="width: 100px;" class="sgm-select"><select style="width: 100px;" class="second_filter" onchange="showThirdFilter(this.value)"><option value="2">is</option><option value="21">range is</option><option value="22" selected="">custom</option></select></div></div>
+                        </div>   
+                        <div class="sogamo_widget_footer">
+                            Segmentation: <div style="width: 100px;" class="sgm-select"><select style="width: 100px;" name="segments" onchange="getSegments()"><option value="2">is</option><option value="21">range is</option><option value="22" selected="">custom</option></select></div>
+                        </div>              
+                    </div>
+            </div>  
+
+                                 
+                                      <!--   <option value="1">Game</option>
+                                        <option value="6">Name</option>
+                                        <option value="8">Last Seen</option>
+                                        <option value="9">Signed Up</option>
+                                        <option value="3">Age</option>
+                                        <option value="4">Gender</option>
+                                        <option value="7">City</option>
+                                        <option value="5">Country</option> -->
+ 
+</body>
+</html>
